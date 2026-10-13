@@ -29,6 +29,7 @@ export const CHARS = {
   mottonen: { s: '#e0b090', h: '#d8c070', H: '#a89040', j: '#5a3a22', J: '#3e2814', k: '#7a5232', p: '#a02a2a', P: '#f0f0f0', b: '#f0f0f0', x: '#3e2814' },
   rane: { s: '#e0b090', h: '#101010', H: '#000000', j: '#1c1c1e', J: '#0c0c0e', k: '#4a4a52', p: '#2a3050', P: '#1c2038', b: '#111111', x: '#8a8a90', acc: ['shades'] },
   soldier: { s: '#d8a888', h: '#3a2a1a', j: '#4a5a3a', J: '#34422a', k: '#62754c', p: '#3e4a30', P: '#2e3824', b: '#1c1c18', x: '#2a2a20', H: '#4a5a3a', M: '#6b7068', acc: ['helmet', 'mask'] },
+  ranger: { s: '#d8a888', h: '#3a2a1a', H: '#2a5aa8', j: '#2a4a8a', J: '#1c3260', k: '#4a72b8', p: '#3a3a40', P: '#e0b830', b: '#1c1c18', x: '#e0b830', M: '#6b7068', acc: ['helmet'] },
   harmaa: { g: '#9eb8a6', G: '#7a9684', s: '#9eb8a6', S: '#7a9684', h: '#9eb8a6', j: '#6a8a78', J: '#52705f', k: '#86a692', p: '#6a8a78', P: '#52705f', b: '#3a4a42', x: '#2a3a32', alien: 1, gunc: '#7be07b' },
   komentaja: { g: '#b49ccc', G: '#8a74a6', s: '#b49ccc', S: '#8a74a6', h: '#b49ccc', j: '#6a4a8a', J: '#4a3266', k: '#8a6aaa', p: '#6a4a8a', P: '#4a3266', b: '#2a1e3a', x: '#e0408a', alien: 1, gunc: '#ff5fa0' },
   blob: { g: '#c8782a', G: '#a05a1a', w: '#f4efe0', e: '#201008', m: '#6a1a1a', blob: 1 },

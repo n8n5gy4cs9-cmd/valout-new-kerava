@@ -58,6 +58,15 @@ export function generate(loc, locId, { enemyScale = 1 } = {}) {
     hollow(3, 3, 6, 4, 'apt24', [['shotgun', 1], ['ammoShell', 10], ['salmiakki', 2]]); building(14, 3, 4, 3, 'apt40', 0.8); building(5, 26, 6, 4, 'brick24', 0.6);
     wrecks(6, {}, 0.2); scatter(() => pick(['birch', 'birch', 'bush', 'pine']), 16); prop(29, 15, 'ufo_big', { name: 'Hive Mothership' }); wallAt.set(15 * 100 + 29, { x: 29, y: 15, s: null });
     m.start = { x: 2, y: 17 }; exit(0, 17); exit(0, 18); exit(W - 1, 17); exit(W - 1, 18); m.hive = { x: 29, y: 17 };
+  } else if (loc.kind === 'kuopat') {   // Jaeniksenlinna sand pits: dug-out pits, sandbag walls, Ranger camp
+    fill(0, 0, W, H, (x, y) => (r() < 0.8 ? 'sand1' : 'sand2'));
+    for (const [px0, py0, pw, ph] of [[3, 3, 9, 7], [18, 4, 10, 8], [4, 21, 11, 8], [20, 22, 9, 7]]) fill(px0, py0, pw, ph, (x, y) => (r() < 0.55 ? 'rubble' : 'sand2'));
+    fill(11, 11, 12, 10, 'pave');
+    for (let x = 11; x < 23; x++) { wall(x, 11, 'conc12'); wall(x, 20, 'conc12'); } for (let y = 11; y < 21; y++) { wall(11, y, 'conc12'); wall(22, y, 'conc12'); }
+    for (const [x, y] of [[11, 15], [11, 16], [22, 15], [22, 16], [16, 11], [17, 11], [16, 20], [17, 20]]) { wallAt.delete(y * 100 + x); m.walls = m.walls.filter((w) => !(w.x === x && w.y === y)); }       // gates
+    building(14, 13, 4, 3, 'wood24', 0.1); hollow(19, 17, 3, 2, 'brick24', [['rifle', 1], ['ammoRifle', 12], ['salmiakki', 2]]); prop(13, 18, 'barrel_a'); prop(20, 14, 'barrel_b'); prop(15, 17, 'sign'); prop(12, 12, 'lamp'); prop(21, 12, 'lamp');
+    scatter(() => pick(['pine', 'bush', 'bush', 'birch']), 14); wrecks(3, { x0: 0, y0: 0 }, 0.2); m.start = { x: 2, y: 15 };
+    npc('capt', 17, 14); npc('ranger', 13, 17); npc('ranger', 20, 15); npc('ranger', 17, 18); exit(0, 15); exit(0, 16); exit(W - 1, 15); exit(W - 1, 16);
   } else if (loc.kind === 'klaukkala') {
     for (let y = 2; y < H - 2; y++) { prop(12, y, 'crate'); } fill(13, 2, 9, 20, 'pave'); // fenced safe zone (gap at y=11,12)
     m.props = m.props.filter((p) => !(p.x === 12 && (p.y === 11 || p.y === 12))); propAt.delete(11 * 100 + 12); propAt.delete(12 * 100 + 12);

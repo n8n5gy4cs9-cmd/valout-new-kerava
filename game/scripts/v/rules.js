@@ -56,7 +56,8 @@ export function toHit(a, d, w, mode, distance, { lof = 0, defAP = false } = {}) 
 
 /** Resolve one attack → {hit, crit, fumble, dmg}. */
 export function attack(a, d, w, mode, distance, opts = {}, r = rand) {
-  const chance = toHit(a, d, w, mode, distance, opts), roll = roll100(r), out = { chance, roll, hit: roll <= chance, crit: false, fumble: false, dmg: 0 };
+  const chance = opts.sure ? 100 : toHit(a, d, w, mode, distance, opts), roll = roll100(r), out = { chance, roll, hit: roll <= chance, crit: false, fumble: false, dmg: 0 };
+  if (opts.sure) out.hit = r() * 100 >= Math.min(40, armorClass(d) * 0.5);        // real-time mode: the aim already decided; AC gives a dodge chance
   if (!out.hit) { out.fumble = roll >= 96 && r() < 0.5; return out; }
   const isPlayer = !!a.S;
   const critCh = (isPlayer ? derived(a.S).crit : 5) + (mode.aimed ? 25 : 0);

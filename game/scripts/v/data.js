@@ -45,8 +45,8 @@ export const START_ITEMS = [['nokia', 1], ['puukko', 1], ['denim', 1], ['lonkero
 // ---- enemies -----------------------------------------------------------------------------------------------------------
 // frames: row name in actors.png. weapon: attack definition. sight: tiles.
 export const ENEMIES = {
-  blob: { name: 'Lonkero Mutant', row: 'blob', hp: 16, ac: 0, ap: 6, skill: 55, sight: 9, xp: 25, speed: 2.1, atk: { kind: 'melee', dmg: [3, 7], ap: 3, range: 1 }, die: 'goo', gore: 'goo', alien: true, desc: 'A can of lonkero that got ideas.', loot: [['cash', 3], ['lonkero', 0.4]] },
-  gull: { name: 'Mutant Gull', row: 'gull', hp: 9, ac: 12, ap: 9, skill: 60, sight: 10, xp: 15, speed: 3.4, atk: { kind: 'melee', dmg: [2, 5], ap: 3, range: 1 }, die: 'blood', gore: 'blood', desc: 'It wants your sausage. All of it.', loot: [] },
+  blob: { name: 'Lonkero Mutant', row: 'blob', hp: 16, ac: 0, ap: 6, skill: 55, sight: 9, xp: 25, speed: 2.1, atk: { kind: 'melee', dmg: [3, 7], ap: 4, range: 1 }, die: 'goo', gore: 'goo', alien: true, desc: 'A can of lonkero that got ideas.', loot: [['cash', 3], ['lonkero', 0.4]] },
+  gull: { name: 'Mutant Gull', row: 'gull', hp: 9, ac: 12, ap: 9, skill: 60, sight: 10, xp: 15, speed: 3.4, atk: { kind: 'melee', dmg: [2, 5], ap: 4, range: 1 }, die: 'blood', gore: 'blood', desc: 'It wants your sausage. All of it.', loot: [] },
   harmaa: { name: 'Grey Alien', row: 'harmaa', hp: 24, ac: 5, ap: 7, skill: 60, sight: 11, xp: 40, speed: 2.3, atk: { kind: 'ranged', dmg: [5, 11], ap: 4, range: 12, bolt: true }, die: 'goo', gore: 'goo', alien: true, desc: 'Big head. Big eyes. Small manners.', loot: [['cell', 0.5], ['cash', 5]], dr: 0 },
   komentaja: { name: 'Alien Commander', row: 'komentaja', hp: 55, ac: 15, ap: 8, skill: 70, sight: 12, xp: 120, speed: 2.4, atk: { kind: 'ranged', dmg: [9, 17], ap: 4, range: 14, bolt: true }, die: 'goo', gore: 'goo', alien: true, desc: 'Gold braid on the ray gun. Purple. Very Soviet.', loot: [['raygun', 0.5], ['cell', 1], ['salmiakki', 0.5]], dt: 2, dr: 20 },
   boss: { name: 'Overmind', row: 'boss', big: true, hp: 180, ac: 10, ap: 10, skill: 80, sight: 16, xp: 600, speed: 2.0, atk: { kind: 'ranged', dmg: [13, 24], ap: 4, range: 16, bolt: true }, die: 'goo', gore: 'goo', alien: true, desc: 'The hive brain. It is NOT a big fan of Keski-Uusimaa.', loot: [['raygun', 1], ['cell', 3], ['salmiakki', 2]], dt: 3, dr: 25 },
@@ -56,12 +56,13 @@ export const ENEMIES = {
 // ---- locations ---------------------------------------------------------------------------------------------------------
 export const LOCS = {
   asema: { name: 'Kerava Station', fi: 'Keravan asema', kind: 'asema', map: [70, 250], size: 30, seed: 11, desc: 'The old yellow wooden station. The 7:12 to Helsinki never arrived.', links: ['keskusta'], enemies: { blob: 4, gull: 1 } },
-  keskusta: { name: 'Kauppakaari Centre', fi: 'Kauppakaari / Karuselli', kind: 'keskusta', map: [210, 180], size: 36, seed: 22, desc: 'Brutalist towers, the Posti, Karuselli mall. Christmas lights still blink.', links: ['asema', 'sampola'], enemies: { blob: 4, gull: 2, harmaa: 3 } },
+  keskusta: { name: 'Kauppakaari Centre', fi: 'Kauppakaari / Karuselli', kind: 'keskusta', map: [210, 180], size: 36, seed: 22, desc: 'Brutalist towers, the Posti, Karuselli mall. Christmas lights still blink.', links: ['asema', 'sampola', 'kuopat'], enemies: { blob: 4, gull: 2, harmaa: 3 } },
   sampola: { name: 'Sampola & Ahjo', fi: 'Sampola / Ahjo', kind: 'sampola', map: [350, 120], size: 36, seed: 33, desc: 'Housing blocks, the ice rink, a car park of regrets.', links: ['keskusta', 'joki'], enemies: { blob: 3, harmaa: 5, komentaja: 1 } },
-  joki: { name: 'Keravanjoki Hive', fi: 'Keravanjoki', kind: 'joki', map: [470, 210], size: 36, seed: 44, desc: 'The river bridge. The aliens built a hive on it. Obviously.', links: ['sampola', 'klaukkala'], enemies: { harmaa: 6, komentaja: 2, blob: 3 }, boss: true },
+  kuopat: { name: 'Janikselinna Sand Pits', fi: 'Jaeniksenlinnan hiekkakuopat', kind: 'kuopat', map: [350, 295], size: 32, seed: 66, desc: 'Real Kerava sand pits, now a fortified camp of the Uusimaa Republic Rangers.', links: ['keskusta', 'joki'], enemies: { blob: 2, harmaa: 3, gull: 1 } },
+  joki: { name: 'Keravanjoki Hive', fi: 'Keravanjoki', kind: 'joki', map: [470, 210], size: 36, seed: 44, desc: 'The river bridge. The aliens built a hive on it. Obviously.', links: ['sampola', 'kuopat', 'klaukkala'], enemies: { harmaa: 6, komentaja: 2, blob: 3 }, boss: true },
   klaukkala: { name: 'Klaukkala Safe Zone', fi: 'Klaukkala', kind: 'klaukkala', map: [575, 90], size: 24, seed: 55, desc: 'Fences, floodlights, a flag. Sausage grill. Safe.', links: ['joki'], enemies: {} },
 };
-export const LOC_ORDER = ['asema', 'keskusta', 'sampola', 'joki', 'klaukkala'];
+export const LOC_ORDER = ['asema', 'keskusta', 'sampola', 'kuopat', 'joki', 'klaukkala'];
 
 // ---- quests --------------------------------------------------------------------------------------------------------------
 export const QUESTS = {
@@ -70,6 +71,7 @@ export const QUESTS = {
   wall: { title: 'Wall-Kicking World Championship', steps: { 1: 'Saku and Mottonen are kicking the Posti wall. Beat their record!', 2: 'You kicked the wall harder than anyone. Legend.' }, xp: 150 },
   dice: { title: 'The Green Fuzzy Dice', steps: { 1: 'Rane lost his lucky green fuzzy dice. Probably on a wreck in Sampola.', 2: 'You have the dice. Take them to Rane.', 3: 'Dice delivered. The mirror is complete.' }, xp: 200 },
   plug: { title: 'Spark Plug Hunt', steps: { 1: 'Seppo the kiosk guy has a spark plug, for a favour.', 2: 'You have the spark plug.', 3: 'Spark plug delivered.' }, xp: 120 },
+  ncr: { title: 'Rangers: Sweep the Pits', steps: { 1: 'Captain Lehtonen of the Uusimaa Republic Rangers wants 4 aliens cleared from the sand pits.', 2: 'Pits cleared. Report to Captain Lehtonen.', 3: 'The Republic is grateful. Good vest, too.' }, xp: 250 },
   kill: { title: 'Pest Control', steps: { 1: `Kill ${QUOTA} aliens and the hive collapses by itself. Or find another way out.` }, xp: 0 },
 };
 
@@ -78,11 +80,13 @@ export const QUESTS = {
 const FIN = ['Perkele.', 'Asiaa!', 'Hei Rane!', 'Kippis!'];
 export const NPCS = {
   pena: { name: 'Pena', row: 'pena', start: [['pena_done', 'pena_end'], ['kossu_has', 'pena_kossu'], ['pena_met', 'pena_again'], [null, 'pena1']] },
-  kalle: { name: 'Kalle', row: 'kalle', start: [[null, 'drunk1']] },
+  kalle: { name: 'Kalle', row: 'kalle', start: [['kalle_given', 'drunk_end'], [null, 'drunk1']] },
   saku: { name: 'Saku', row: 'saku', start: [['wall_done', 'saku_end'], ['wall_active', 'saku_again'], ['rane_seen', 'saku2'], [null, 'saku1']] },
   mottonen: { name: 'Mottonen', row: 'mottonen', start: [['wall_done', 'mot_end'], [null, 'mot1']] },
   rane: { name: 'Rane', row: 'rane', start: [['moped_ready', 'rane_ready'], ['dice_given', 'rane_dice'], ['rane_met', 'rane_again'], [null, 'rane1']] },
   seppo: { name: 'Seppo (Kioski)', row: 'pena', start: [['plug_done', 'seppo_end'], ['plug_active', 'seppo_again'], [null, 'seppo1']] },
+  capt: { name: 'Capt. Lehtonen', row: 'ranger', start: [['ncr_done', 'capt_end'], ['ncr_ready', 'capt_done'], ['ncr_active', 'capt_again'], [null, 'capt1']] },
+  ranger: { name: 'Ranger', row: 'ranger', start: [[null, 'ranger1']] },
   sgt: { name: 'Sgt. Hakkarainen', row: 'soldier', start: [[null, 'sgt1']] },
 };
 export const DIALOG = {
@@ -98,7 +102,8 @@ export const DIALOG = {
   pena_end: { say: ['Pena hums happily. "Hei Rane..." he mumbles in his sleep.'], opts: [{ t: '[Leave]', end: true }] },
   drunk1: { say: ['"Moi! Oletko sinä... are you real? I think I fought a lamp post."', '"Got any Kossu? I can pay in... in vibes."'], opts: [
     { t: '[Speech 35] Here, calm down. Have some respect for the lamp post.', skill: ['speech', 35], go: 'drunk_ok', fail: 'drunk_angry' }, { t: 'Kossu? Get lost.', go: 'drunk_angry' }, { t: '[Leave]', end: true }] },
-  drunk_ok: { say: ['"You get me, kaveri. Take this lonkero. I have two. Or six."'], act: ['give lonkero 1', 'xp 10'], opts: [{ t: '[Leave]', end: true }] },
+  drunk_ok: { say: ['"You get me, kaveri. Take this lonkero. I have two. Or six."'], act: ['give lonkero 1', 'xp 10', 'flag kalle_given'], opts: [{ t: '[Leave]', end: true }] },
+  drunk_end: { say: ['Kalle waves a lonkero at you. "Hei hei! Still love you, kaveri."'], opts: [{ t: '[Leave]', end: true }] },
   drunk_angry: { say: ['"Whaaat? You calling me drunk?! I am just... horizontally inclined!"'], act: ['hostile'], opts: [{ t: 'Uh-oh.', end: true }] },
   saku1: { say: ['Saku and Mottonen are kicking a concrete wall. Again. And again.', 'Saku: "Hei! Wanna try? Tough guys kick the wall. It is the Kerava way. Like Rane."'], opts: [
     { t: 'Rane?', go: 'saku_rane' }, { t: 'Sure. How tough is tough?', go: 'saku_wall' }, { t: '[Leave]', end: true }] },
@@ -119,11 +124,20 @@ export const DIALOG = {
   rane_ready: { say: ['"Moped is ready."', '"Kill the Overmind at the river. Then I ride you to Klaukkala. Hei Tero."'], opts: [{ t: 'Asiaa.', end: true }] },
   seppo1: { say: ['Seppo peers from the kiosk shutters. "Closed. Because of the aliens."', '"I have a spark plug. Not for sale. But if you get me the station key, I could... reconsider."'], opts: [
     { t: '[Speech 45] Seppo, ihminen. Please.', skill: ['speech', 45], go: 'seppo_give', fail: 'seppo_no' }, { t: 'Where is the key?', go: 'seppo_key' }, { t: '[Leave]', end: true }] },
+  seppo_key_ok: { say: ['Seppo takes the key and sniffs it. "From the dead guy? Good. Here, the plug."', '"I never saw you. Hei hei."'], act: ['take key 1', 'give plug 1', 'quest plug 2', 'flag plug_has', 'flag plug_done', 'xp 40'], opts: [{ t: 'Kiitos, Seppo.', end: true }] },
   seppo_key: { say: ['"The key is on a dead guy in the kiosk behind the Posti. Do not ask whose."'], act: ['quest plug 1', 'flag plug_active'], opts: [{ t: '[Leave]', end: true }] },
   seppo_no: { say: ['"Hmm. No. Persuasion is not what it used to be. Bring the key."'], opts: [{ t: '[Leave]', end: true }] },
-  seppo_give: { say: ['"...Ugh, fine. Take it. And for the love of Kerava, do not tell Rane it was free."'], act: ['give plug 1', 'quest plug 2', 'flag plug_has'], opts: [{ t: 'Kiitos, Seppo.', end: true }] },
+  seppo_give: { say: ['"...Ugh, fine. Take it. And for the love of Kerava, do not tell Rane it was free."'], act: ['give plug 1', 'quest plug 2', 'flag plug_has', 'flag plug_done'], opts: [{ t: 'Kiitos, Seppo.', end: true }] },
   seppo_again: { say: ['"Key. Posti. Dead guy. Go."'], opts: [{ t: '[Leave]', end: true }], extra: 'seppo_check' },
   seppo_end: { say: ['Seppo is polishing a can of lonkero. "Closed."'], opts: [{ t: '[Leave]', end: true }] },
+  capt1: { say: ['A blue-and-yellow banner snaps in the wind over the sand pits. Captain Lehtonen salutes with a clipboard.', '"Uusimaa Republic Rangers, Third Sand Pit Battalion. We have order, paperwork and a flag. We do not have enough bullets."', '"Sampola fell, the army sealed Kehä III and left us to manage the Republic ourselves. Democracy is a lot of forms."'], opts: [
+    { t: 'What does the Republic need?', go: 'capt2' }, { t: 'Rane told me about a bridge. Any advice?', go: 'capt_bridge' }, { t: '[Leave]', end: true }] },
+  capt2: { say: ['"Four aliens cleared from the pits. Then the Republic grants you a vest, 100 markkaa and a very official thank-you."'], opts: [{ t: 'Consider it done, Captain.', end: true, act: ['quest ncr 1', 'flag ncr_active'] }, { t: 'Not my forms.', end: true }] },
+  capt_bridge: { say: ['"The Overmind sits on the river bridge. Hit it hard. Its guards are thin after dark."', '"Ranger intel says: the brain has about 180 HP and hates shotgun blasts. Take a shotgun."'], opts: [{ t: 'Thanks. About the pits...', go: 'capt2' }, { t: '[Leave]', end: true }] },
+  capt_again: { say: ['"Four aliens in the pits. Report back when done, citizen."'], opts: [{ t: '[Leave]', end: true }] },
+  capt_done: { say: ['"Four down! The Republic thanks you, Tero. Sign here. And here. And here."'], act: ['give vest 1', 'give cash 100', 'xp 60', 'quest ncr 3', 'flag ncr_done'], opts: [{ t: 'Asiaa.', end: true }] },
+  capt_end: { say: ['"For Uusimaa!" Lehtonen stamps another form.'], opts: [{ t: '[Leave]', end: true }] },
+  ranger1: { say: ['The Ranger stands at attention. "Halt, citizen. State your business. Or do not, we are on break."', '"We have a flag, a constitution and one working generator. Do not touch the generator."'], opts: [{ t: '[Leave]', end: true }] },
   sgt1: { say: ['Sgt. Hakkarainen salutes. "Tero? From Kerava?! You rode through the cordon?!"', '"We saw the green glow all night. The hive collapsed? Stand down, men! Someone get this man a sausage."'], opts: [{ t: 'Asiaa.', end: true, act: ['ending escape'] }] },
 };
 
