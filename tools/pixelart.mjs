@@ -3,7 +3,7 @@
 // (one character per pixel, palette maps characters to colours). This file only parses those grids, composes frames out of
 // drawn parts (puppet animation), and encodes PNG sheets (+ nord `.meta.json` sidecars).
 //
-//   node tools/pixelart.mjs <game> [--preview]      games: rpd, noom   (writes into tools/examples/<id>/assets/…)
+//   node tools/pixelart.mjs <game> [--preview]      games: rpd, noom   (writes into game/assets/…)
 //
 // Art module contract (tools/art/<game>/index.mjs): `export default (px) => [ { out:'assets/x.png', image, meta? }, … ]`
 // where `px` is this module's exports. See tools/art/README.md for the drawing conventions.
@@ -81,7 +81,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const mod = await import(pathToFileURL(path.join(ROOT, 'tools/art', game, 'index.mjs')).href);
   const px = { grid, flipH, mirror, blit, compose, crop, sheet, blank, scaleUp };
   const outs = await mod.default(px);
-  const base = path.join(ROOT, 'tools/examples', mod.id ?? game);
+  const base = path.join(ROOT, 'game');
   const prev = process.argv.includes('--preview') ? process.env.PREVIEW_DIR ?? path.join(ROOT, 'target/art-preview') : null;
   const previews = [];
   if (prev) fs.mkdirSync(prev, { recursive: true });
