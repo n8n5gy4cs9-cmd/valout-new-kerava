@@ -1,0 +1,11 @@
+# tasks.md  (updated after every task + commit)
+- [x] M0 Plan, PRD, tasks, repo scaffold, vendored nord-engine runtime
+- [ ] M1 Pixel art: tiles, buildings, props, actors (Tero, drunk, Saku, Möttönen, Rane, soldier, aliens), FX, item icons, UI frame
+- [ ] M2 Data + rules (F2 port) + mapgen + pathfinding
+- [ ] M3 Area view: iso render, entities, camera, classic click control
+- [ ] M4 Classic turn combat (AP, to-hit, aimed, crits, AI, XP)
+- [ ] M5 F2 HUD (log, AP LEDs, HP/AC, buttons) + inventory + character + level-up
+- [ ] M6 Dialogue, quests, wall-kicking minigame, drunks, world map, endings
+- [ ] M7 Modern mode (WASD + mouse aim/shoot, dodge, quick slots)
+- [ ] M8 SFX + music (assets.md)
+- [ ] M9 Smoke test + screenshots + polish + final push
